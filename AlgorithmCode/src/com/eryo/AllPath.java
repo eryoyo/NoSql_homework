@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  author:18301092-eryo
+ *  author:18301092-陈佳林
  *  time:2020年12月2日
  */
 public class AllPath {
@@ -35,7 +35,7 @@ public class AllPath {
     }
 
     public static void main(String[] args) {
-        String str = "[1,2,3,null,5]";
+        String str = "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]";
         TreeNode root = TreeNode.stringToTreeNode(str);
         List<String> paths = findAllPath(root);
         for(String path : paths) {
