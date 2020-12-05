@@ -52,6 +52,8 @@ public class Main {
             JSONArray actions = obj1.getJSONArray("actions");
             for(int i = 0; i < actions.size(); i++) {
                 String actionName = (String) actions.getJSONObject(i).get("name");
+                System.out.println(actionName);
+
                 List<CounterConfig> retrieve = new ArrayList<>();
                 List<CounterConfig> save = new ArrayList<>();
                 JSONArray retrieveArray = actions.getJSONObject(i).getJSONArray("retrieve");

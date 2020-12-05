@@ -5,7 +5,7 @@
       "counterIndex": "1",
       "type": "num",
       "keyFields": "User",
-      "valueFields": "4"
+      "valueFields": "5"
     },
     {
       "counterName": "decrUserNum",
@@ -60,14 +60,40 @@
       "counterName": "showList",
       "counterIndex": "9",
       "type": "list",
-      "keyFields": "user"
+      "keyFields": "userList"
     },
     {
       "counterName": "addList",
       "counterIndex": "10",
       "type": "list",
       "keyFields": "userList",
-      "valueFields": "test"
+      "valueFields": "testList"
+    },
+    {
+      "counterName": "showSet",
+      "counterIndex": "11",
+      "type": "set",
+      "keyFields": "userSet"
+    },
+    {
+      "counterName": "addSet",
+      "counterIndex": "12",
+      "type": "set",
+      "keyFields": "userSet",
+      "valueFields": "testSet"
+    },
+    {
+      "counterName": "showZSet",
+      "counterIndex": "11",
+      "type": "zset",
+      "keyFields": "userZSet"
+    },
+    {
+      "counterName": "addZSet",
+      "counterIndex": "12",
+      "type": "zset",
+      "keyFields": "userZSet",
+      "valueFields": "testZSet"
     }
   ]
 }
