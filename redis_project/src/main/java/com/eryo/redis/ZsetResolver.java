@@ -21,7 +21,7 @@ public class ZsetResolver implements TypeResolver{
                 if(jedis.type(key).equals("zset")) {
                     if(value != null) {
                         if(expireTime != 0) {
-                            if (!jedis.sismember(key, value)){
+                            if (jedis.zrank(key, value) < 0){
                                 jedis.zadd(key, 1, value);
                                 jedis.expire(key, expireTime);
                                 res = "键：" + key + "中集合中添加新值：" + value + "，score为1" + "，key的过期时间为" + jedis.ttl(key);
@@ -29,7 +29,7 @@ public class ZsetResolver implements TypeResolver{
                                 res = "键：" + key + "中集合中已经存在值：" + value + "，score为1" + "，key的过期时间为" + jedis.ttl(key);
                             }
                         } else {
-                            if (!jedis.sismember(key, value)){
+                            if (jedis.zrank(key, value) < 0){
                                 jedis.zadd(key, 1, value);
                                 jedis.expire(key, expireTime);
                                 res = "键：" + key + "中集合中添加新值：" + value + "，score为1";
@@ -40,7 +40,7 @@ public class ZsetResolver implements TypeResolver{
                     } else {
                         if(expireTime != 0) {
                             jedis.expire(key, expireTime);
-                            Set<String> set = jedis.zrange(key, 1, 2);
+                            Set<String> set = jedis.zrangeByScore(key, 1, 2);
                             res = "键：" + key + "中集合的值如下：";
                             Iterator<String> it = set.iterator();
                             while(it.hasNext()){
@@ -48,7 +48,7 @@ public class ZsetResolver implements TypeResolver{
                                 res += str + " ";
                             }
                         }else{
-                            Set<String> set = jedis.zrange(key, 1, 2);
+                            Set<String> set = jedis.zrangeByScore(key, 1, 2);
                             res = "键：" + key + "中集合的值如下：";
                             Iterator<String> it = set.iterator();
                             while(it.hasNext()){
@@ -63,10 +63,10 @@ public class ZsetResolver implements TypeResolver{
                     if(expireTime != 0) {
                         jedis.zadd(key, 1, value);
                         jedis.expire(key, expireTime);
-                        res = "键：" + key + "中集合中添加新值：" + value + "，key的过期时间为：" + expireTime;
+                        res = "键：" + key + "中集合中添加新值：" + value + "，score为1" + "，key的过期时间为：" + expireTime;
                     } else {
                         jedis.zadd(key, 1, value);
-                        res = "键：" + key + "中集合中添加新值：" + value;
+                        res = "键：" + key + "中集合中添加新值：" + value + "，score为1";
                     }
                 }
             }

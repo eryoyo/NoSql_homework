@@ -34,6 +34,11 @@ public class ListResolver implements TypeResolver{
                             res = "键：" + key + "中列表的值如下：";
                             for(int i = 0; i < list.size(); i++)
                                 res += list.get(i) + " ";
+                        }else{
+                            List<String> list = jedis.lrange(key, 0, -1);
+                            res = "键：" + key + "中列表的值如下：";
+                            for(int i = 0; i < list.size(); i++)
+                                res += list.get(i) + " ";
                         }
                     }
                 }

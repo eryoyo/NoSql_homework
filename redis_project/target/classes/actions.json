@@ -83,6 +83,34 @@
           "counterName": "addList"
         }
       ]
+    },
+    {
+      "name": "ADD_SET",
+      "describe": "添加set中的项",
+      "retrieve": [
+        {
+          "counterName": "showSet"
+        }
+      ],
+      "save": [
+        {
+          "counterName": "addSet"
+        }
+      ]
+    },
+    {
+      "name": "ADD_ZSET",
+      "describe": "添加zset中的项",
+      "retrieve": [
+        {
+          "counterName": "showZSet"
+        }
+      ],
+      "save": [
+        {
+          "counterName": "addZSet"
+        }
+      ]
     }
   ]
 }
