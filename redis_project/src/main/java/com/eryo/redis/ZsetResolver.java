@@ -16,6 +16,7 @@ public class ZsetResolver implements TypeResolver{
         String key = counterSpec.getKeyFields();
         String value = counterSpec.getValueFields();
         int expireTime = counterSpec.getExpireTime();
+        
         if(key != null) {
             if(jedis.exists(key)) {
                 if(jedis.type(key).equals("zset")) {
