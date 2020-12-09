@@ -2,6 +2,9 @@ package com.eryo.redis;
 
 import redis.clients.jedis.Jedis;
 
+/**
+ * 执行数值型操作，包括增加一定量，减少一定量以及创建该值
+ */
 public class NumResolver implements TypeResolver{
 
     private CounterSpec counterSpec;
@@ -10,8 +13,11 @@ public class NumResolver implements TypeResolver{
     @Override
     public String resolve() {
         String res = "没有进行有效操作";
+        //获取操作的key
         String key = counterSpec.getKeyFields();
+        //获取数值变化的幅度
         String value = counterSpec.getValueFields();
+        //获取数值的过期时间
         int expireTime = counterSpec.getExpireTime();
         // 有keyFields字段时
         if(key != null) {
@@ -22,14 +28,17 @@ public class NumResolver implements TypeResolver{
                     // 有expireTime时
                     long val = Long.parseLong(value);
                     if(expireTime != 0) {
+                        //增加指定的数值
                         jedis.incrBy(key, val);
+                        //更新过期时间
                         jedis.expire(key, expireTime);
                         res = "键" + key + "变化了" + val + "，距离过期还有" + expireTime + "秒" + "，现在为：" + jedis.get(key);
                     } else {    // 没有expireTime时（为0）
                         jedis.incrBy(key, val);
                         res = "键" + key + "变化了" + val + "，现在为：" + jedis.get(key);
                     }
-                } else {    // 没有valueFields时
+                } else {
+                    // 没有valueFields时，不改变数值大小
                     // 有expireTime时
                     if(expireTime != 0) {
                         jedis.expire(key, expireTime);

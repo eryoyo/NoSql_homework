@@ -18,17 +18,17 @@ public class SetResolver implements TypeResolver{
         int expireTime = counterSpec.getExpireTime();
         if(key != null) {
             if(jedis.exists(key)) {
-                if(jedis.type(key).equals("set")) {
-                    if(value != null) {
-                        if(expireTime != 0) {
+                if(jedis.type(key).equals("set")) { //存在该set，直接操作
+                    if(value != null) {     //向该set中添加新值
+                        if(expireTime != 0) {   //添加新值，更新过期时间
                             if (!jedis.sismember(key, value)){
                                 jedis.sadd(key, value);
                                 jedis.expire(key, expireTime);
                                 res = "键：" + key + "中集合中添加新值：" + value + "，key的过期时间为" + jedis.ttl(key);
-                            }else{
+                            }else{      //重复添加
                                 res = "键：" + key + "中集合中已经存在值：" + value + "，key的过期时间为" + jedis.ttl(key);
                             }
-                        } else {
+                        } else {        //仅添加新值
                             if (!jedis.sismember(key, value)){
                                 jedis.sadd(key, value);
                                 jedis.expire(key, expireTime);
@@ -37,8 +37,8 @@ public class SetResolver implements TypeResolver{
                                 res = "键：" + key + "中集合中已经存在值：" + value;
                             }
                         }
-                    } else {
-                        if(expireTime != 0) {
+                    } else {        //展示该set下的值
+                        if(expireTime != 0) {   //展示该set下的值并更新过期时间
                             jedis.expire(key, expireTime);
                             Set<String> set = jedis.smembers(key);
                             res = "键：" + key + "中集合的值如下：";
@@ -58,7 +58,7 @@ public class SetResolver implements TypeResolver{
                         }
                     }
                 }
-            } else {
+            } else {        //创建该set，然后添加新值
                 if(value != null) {
                     if(expireTime != 0) {
                         jedis.sadd(key, value);

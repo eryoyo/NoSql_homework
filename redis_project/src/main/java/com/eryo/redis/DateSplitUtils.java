@@ -7,8 +7,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 将时间按照天，小时，分钟，秒切分为不同的段,最后一个时间段可能不是一个完整的时间段
+ */
 public class DateSplitUtils {
 
+    //时间切割的粒度
     public enum IntervalType {
         DAY,
         HOUR,
@@ -261,7 +265,7 @@ public class DateSplitUtils {
 
     public static void main(String[] args) throws ParseException {
         SimpleDateFormat strToDate = new SimpleDateFormat("yyyyMMddHHmm");
-        Date start = strToDate.parse("202012021200");
+        Date start = strToDate.parse("202012021255");
         Date end = strToDate.parse("202012022300");
         List<DateSplitUtils.DateSplit> dateSplits = DateSplitUtils.splitDate(start, end, IntervalType.HOUR, 1);
 

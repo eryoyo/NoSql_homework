@@ -1,21 +1,23 @@
 package com.eryo.redis;
 
+/**
+ * @author 18301092-陈佳林
+ *  计数器的实体类，保存着操作的具体信息
+ */
 public class CounterSpec {
 
+    //计数器的名称
     private String counterName;
-
     private String counterIndex;
-
+    //操作的数据的类型
     private String type;
-
+    //redis中键值对的key
     private String keyFields;
-
     private String fields;
-
+    //数值型增加的幅度，对于列表和集合是加入到列表或集合之中的值
     private String valueFields;
-
     private int maxSize;
-
+    //过期时间
     private int expireTime;
 
     public String getCounterName() {

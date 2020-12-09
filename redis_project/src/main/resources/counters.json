@@ -1,46 +1,46 @@
 {
   "counters": [
     {
-      "counterName": "incrUserNum",
+      "counterName": "incrFlow",
       "counterIndex": "1",
       "type": "num",
-      "keyFields": "User",
+      "keyFields": "Flow",
       "valueFields": "5"
     },
     {
-      "counterName": "decrUserNum",
+      "counterName": "decrFlow",
       "counterIndex": "2",
       "type": "num",
-      "keyFields": "User",
+      "keyFields": "Flow",
       "valueFields": "-1"
     },
     {
-      "counterName": "showUserNum",
+      "counterName": "showFlow",
       "counterIndex": "3",
       "type": "num",
-      "keyFields": "User"
+      "keyFields": "Flow"
     },
     {
-      "counterName": "showUserFreq",
+      "counterName": "showFlowStatistics",
       "counterIndex": "4",
       "type": "freq",
-      "keyFields": "User1000",
-      "fields": "202011221200 202011221300"
+      "keyFields": "FlowStatistics",
+      "fields": "202012021200 202012031300"
     },
     {
-      "counterName": "incrUserFreq",
+      "counterName": "incrFlowStatistics",
       "counterIndex": "5",
       "type": "freq",
-      "keyFields": "User1000",
-      "fields": "202011221244",
+      "keyFields": "FlowStatistics",
+      "fields": "202012031244",
       "valueFields": "1"
     },
     {
-      "counterName": "decrUserFreq",
+      "counterName": "decrFlowStatistics",
       "counterIndex": "6",
       "type": "freq",
-      "keyFields": "User1000",
-      "fields": "202011221255",
+      "keyFields": "FlowStatistics",
+      "fields": "202012021255",
       "valueFields": "-2"
     },
     {

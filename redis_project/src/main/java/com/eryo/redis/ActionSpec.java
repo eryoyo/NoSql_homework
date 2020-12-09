@@ -2,10 +2,14 @@ package com.eryo.redis;
 
 import java.util.List;
 
+/**
+ * @author 18301092-陈佳林
+ */
 public class ActionSpec {
 
+    //在执行动作前的展示对应数据的内容
     private List<CounterConfig> retrieve;
-
+    //执行操作
     private List<CounterConfig> save;
 
     public List<CounterConfig> getRetrieve() {

@@ -14,27 +14,33 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ *   author 18301092-陈佳林
+ *   time 2020年12月2日
+ */
 public class Main {
-    // counter映射
+    // counter映射 计数器集合
     private static final HashMap<String, CounterSpec> counterMap = new HashMap<>();
-    // action映射
+    // action映射 操作集合
     private static final HashMap<String, ActionSpec> actionMap = new HashMap<>();
     // typeFactory
     private static final TypeFactory typeFactory = new TypeFactory();
-    // 终端输入
+    // 命令行输入
     private static final BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-    // 终端输出
+    // 命令行输出
     private static final PrintWriter out = new PrintWriter(System.err, true);
-    // monitor
+    // monitor 监听json文件的变化
     private static FileAlterationMonitor monitor;
     // lock
     public static AtomicBoolean lock = new AtomicBoolean(false);
 
+    //读取json文件，获取当前的操作和计数器
     public static void loadConfigJson() {
         try {
             out.println();
             out.println("读取Json配置文件中...");
-            // 清空
+
+            // 清空 在json文件改变后重读有用
             counterMap.clear();
             actionMap.clear();
             // 获取actions和counters的json配置文件

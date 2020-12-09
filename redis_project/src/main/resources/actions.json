@@ -1,58 +1,58 @@
 {
   "actions": [
     {
-      "name": "INCR_USER",
-      "describe": "user计数加1",
+      "name": "INCR_FLOW",
+      "describe": "人流减少",
       "retrieve": [
         {
-          "counterName": "showUserNum"
+          "counterName": "showFlow"
         }
       ],
       "save": [
         {
-          "counterName": "incrUserNum"
+          "counterName": "incrFlow"
         }
       ]
     },
     {
-      "name": "DECR_USER",
-      "describe": "user计数减1",
+      "name": "DECR_FLOW",
+      "describe": "人流增加",
       "retrieve": [
         {
-          "counterName": "showUserNum"
+          "counterName": "showFlow"
         }
       ],
       "save": [
         {
-          "counterName": "decrUserNum"
+          "counterName": "decrFlow"
         }
       ]
     },
     {
-      "name": "INCR_USER_FREQ",
+      "name": "INCR_FLOW_STATISTICS",
       "describe": "用户时段上线数增加",
       "retrieve": [
         {
-          "counterName": "showUserFreq"
+          "counterName": "showFlowStatistics"
         }
       ],
       "save": [
         {
-          "counterName": "incrUserFreq"
+          "counterName": "incrFlowStatistics"
         }
       ]
     },
     {
-      "name": "DECR_USER_FREQ",
+      "name": "DECR_FLOW_STATISTICS",
       "describe": "用户时段上线数减少",
       "retrieve": [
         {
-          "counterName": "showUserFreq"
+          "counterName": "showFlowStatistics"
         }
       ],
       "save": [
         {
-          "counterName": "decrUserFreq"
+          "counterName": "decrFlowStatistics"
         }
       ]
     },

@@ -2,6 +2,9 @@ package com.eryo.redis;
 
 import redis.clients.jedis.Jedis;
 
+/**
+ * 添加字符串或更新字符串及其过期时间的操作
+ */
 public class StrResolver implements TypeResolver {
 
     private CounterSpec counterSpec;
@@ -14,12 +17,12 @@ public class StrResolver implements TypeResolver {
         String value = counterSpec.getValueFields();
         int expireTime = counterSpec.getExpireTime();
         if (key != null) {
-            if(jedis.exists(key) && jedis.type(key).equals("string")) {
-                if (value != null) {
-                    if(expireTime != 0) {
+            if(jedis.exists(key) && jedis.type(key).equals("string")) {     //存在该字符串
+                if (value != null) {    //更新该字符串的值
+                    if(expireTime != 0) {   //更新该字符串的过期时间
                         jedis.setex(key, expireTime, value);
                         res = "键：" + key + "，键值为：" + value + "，过期时间为：" + expireTime;
-                    } else {
+                    } else {        //仅更新该字符串的值
                         jedis.set(key, value);
                         res = "键：" + key + "，键值为：" + value;
                     }
@@ -31,7 +34,7 @@ public class StrResolver implements TypeResolver {
                         res = "键值为：" + jedis.get(key) + "，过期时间为：" + jedis.ttl(key) + "秒";
                     }
                 }
-            } else {
+            } else {    //不存在该字符串
                 if (value != null) {
                     if(expireTime != 0) {
                         jedis.setex(key, expireTime, value);
